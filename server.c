@@ -5,7 +5,8 @@
 #include<arpa/inet.h> //inet_addr
 #include<unistd.h>    //write
 
-int connection_handler(void *socket_desc) {
+int connection_handler(void *socket_desc) 
+{
     //Get the socket descriptor
     int sock = *(int*)socket_desc;
     int read_size;
@@ -18,14 +19,14 @@ int connection_handler(void *socket_desc) {
         if (read_size < 0) {
             fail_counter++;
             if (fail_counter > 14) {break;}
-        }     
-        else {
+        } else {
             fail_counter = 0;
             //Print recieved data 
             printf("%s\n", client_message);
             fflush(stdout);
         } 
     }
+	
     if(read_size == -1) {
         perror("recv failed");
     }
@@ -51,8 +52,7 @@ int main()
     setsockopt(socket_desc, SOL_SOCKET, SO_REUSEADDR, &reuse_opt, sizeof(reuse_opt)); //reuse enabled
     setsockopt(socket_desc, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout)); //set timeout
 
-    if (socket_desc == -1)
-    {
+    if (socket_desc == -1) {
         printf("Could not create socket");
     }
      
