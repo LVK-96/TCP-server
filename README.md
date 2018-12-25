@@ -1,2 +1,2 @@
 # TCP-server
-Simple TCP server implemented in C. 
+Simple TCP server written in C. 
