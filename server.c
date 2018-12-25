@@ -1,6 +1,6 @@
 #include<stdio.h>
-#include<string.h>    //strlen
-#include<stdlib.h>    //strlen
+#include<string.h>
+#include<stdlib.h>    
 #include<sys/socket.h>
 #include<arpa/inet.h> //inet_addr
 #include<unistd.h>    //write
@@ -62,8 +62,7 @@ int main()
     server.sin_port = htons( 8888 );
      
     //Bind
-    if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)
-    {
+    if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0) {
         puts("bind failed");
         return 1;
     }
